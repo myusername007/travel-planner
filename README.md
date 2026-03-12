@@ -35,20 +35,20 @@ Swagger docs: `http://localhost:8010/docs`
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/v1/projects` | Create a project |
-| GET | `/api/v1/projects` | List all projects |
-| GET | `/api/v1/projects/{id}` | Get a single project |
-| PATCH | `/api/v1/projects/{id}` | Update project info |
-| DELETE | `/api/v1/projects/{id}` | Delete project (blocked if any place is visited) |
+| POST | `/projects` | Create a project |
+| GET | `/projects` | List all projects |
+| GET | `/projects/{id}` | Get a single project |
+| PATCH | `/projects/{id}` | Update project info |
+| DELETE | `/projects/{id}` | Delete project (blocked if any place is visited) |
 
 ### Places
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/v1/projects/{id}/places` | Add a place to a project |
-| GET | `/api/v1/projects/{id}/places` | List all places in a project |
-| GET | `/api/v1/projects/{id}/places/{place_id}` | Get a single place |
-| PATCH | `/api/v1/projects/{id}/places/{place_id}` | Update notes or mark as visited |
+| POST | `/projects/{id}/places` | Add a place to a project |
+| GET | `/projects/{id}/places` | List all places in a project |
+| GET | `/projects/{id}/places/{place_id}` | Get a single place |
+| PATCH | `/projects/{id}/places/{place_id}` | Update notes or mark as visited |
 
 ## Business Rules
 
@@ -62,7 +62,7 @@ Swagger docs: `http://localhost:8010/docs`
 
 **Create a project with places:**
 ```json
-POST /api/v1/projects
+POST /projects
 {
   "name": "Chicago Art Trip",
   "description": "Places I want to visit",
@@ -76,7 +76,7 @@ POST /api/v1/projects
 
 **Add a place to existing project:**
 ```json
-POST /api/v1/projects/{project_id}/places
+POST /projects/{project_id}/places
 {
   "external_id": 27992
 }
@@ -84,7 +84,7 @@ POST /api/v1/projects/{project_id}/places
 
 **Mark a place as visited:**
 ```json
-PATCH /api/v1/projects/{project_id}/places/{place_id}
+PATCH /projects/{project_id}/places/{place_id}
 {
   "is_visited": true
 }
@@ -92,7 +92,7 @@ PATCH /api/v1/projects/{project_id}/places/{place_id}
 
 **Update notes:**
 ```json
-PATCH /api/v1/projects/{project_id}/places/{place_id}
+PATCH /projects/{project_id}/places/{place_id}
 {
   "notes": "Sculpture gallery"
 }
