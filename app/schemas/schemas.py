@@ -36,7 +36,7 @@ class ProjectCreate(BaseModel):
     name: str = Field(..., min_length=1, max_length=255)
     description: Optional[str] = None
     start_date: Optional[date] = None
-    places: Optional[List[PlaceCreate]] = None
+    places: List[PlaceCreate] = Field(..., min_length=1)
 
 
 class ProjectUpdate(BaseModel):

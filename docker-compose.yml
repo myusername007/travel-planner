@@ -2,8 +2,11 @@ services:
   api:
     build: .
     ports:
-      - "8000:8000"
+      - "8010:8000"
     volumes:
-      - ./travel.db:/app/travel.db
+      - sqlite_data:/app/data
     env_file:
       - .env
+
+volumes:
+  sqlite_data:

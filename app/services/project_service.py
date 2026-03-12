@@ -58,6 +58,9 @@ async def _check_project_completion(db: AsyncSession, project: Project) -> None:
 async def create_project(db: AsyncSession, data: ProjectCreate) -> Project:
     places_data = data.places or []
 
+    if len(places_data) < 1:
+        raise BusinessError("A project must have at least 1 place")
+
     if len(places_data) > MAX_PLACES_PER_PROJECT:
         raise BusinessError(f"A project can have at most {MAX_PLACES_PER_PROJECT} places")
 
